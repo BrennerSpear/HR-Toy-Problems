@@ -17,12 +17,12 @@ READ BUT DO NOTHING
 var Node = function(value) {
   this.value = value;
   this.next = null;
-}
+};
 
 var LinkedList = function() {
   this.head = null;
   this.tail = null;
-}
+};
 
 LinkedList.prototype.addToTail = function(value) {
   if (this.head === null) {
@@ -38,9 +38,26 @@ LinkedList.prototype.addToTail = function(value) {
 
 //Your function here
 LinkedList.prototype.findMiddle = function() {
+  if(this.head === null) { return null;}
 
+  var fastNode = this.head;
+  var slowNode = this.head;
+  
+  while(fastNode !== null && fastNode.next !== null) {
+
+    fastNode = fastNode.next.next;
+
+    slowNode = slowNode.next;
+  }
+
+  return slowNode.value;
 };
 
 
 //don't worry about this
 module.exports = LinkedList;
+
+
+
+
+
